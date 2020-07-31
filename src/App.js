@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './App.scss'
+import City from './City'
+import Clock from './Clock'
+import Day from './Day'
+import Modal from './Modal'
+import Nav from './Nav'
+import { WeatherPanel } from './Weather'
+import { SettingsProvider } from './Settings'
 
-function App() {
+function App () {
+  const [isModalShown, setIsModalShown] = useState(false)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <SettingsProvider>
+      <Nav setIsModalShown={setIsModalShown}/>
+      <div className="container">
+        <Clock/>
+        <Day/>
+        <WeatherPanel/>
+        <City/>
+        {isModalShown && <Modal setIsModalShown={setIsModalShown}/>}
+      </div>
+    </SettingsProvider>
+
+  )
 }
 
-export default App;
+export default App
