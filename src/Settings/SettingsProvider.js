@@ -13,7 +13,9 @@ function updateSettingsMaker (setSettings) {
 export default function SettingsProvider ({ children }) {
   const defaultSettings = {
     units: 'metric',
-    location: 'Cairo,EG'
+    location: 'Cairo,EG',
+    timeFormat: '12hours',
+    showSeconds: true
   }
   const savedSettings = loadSettings(defaultSettings)
 

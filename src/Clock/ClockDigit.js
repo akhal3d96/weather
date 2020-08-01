@@ -11,6 +11,6 @@ export default function ClockDigit ({ digits, children }) {
 }
 
 ClockDigit.propTypes = {
-  digits: PropTypes.number,
+  digits: PropTypes.oneOfType([Number, String]).isRequired,
   children: PropTypes.array
 }
