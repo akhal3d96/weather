@@ -5,8 +5,8 @@ import Clock from './Clock'
 import Day from './Day'
 import Modal from './Modal'
 import Nav from './Nav'
-import { WeatherPanel } from './Weather'
 import { SettingsProvider } from './Settings'
+import { WeatherPanel } from './Weather'
 
 function App () {
   const [isModalShown, setIsModalShown] = useState(false)

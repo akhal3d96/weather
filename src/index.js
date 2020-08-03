@@ -9,8 +9,6 @@ import * as serviceWorker from './serviceWorker'
 //   return this[Math.floor((Math.random() * this.length))]
 // }
 
-document.body.style.backgroundColor = '#fffff'
-
 ReactDOM.render(
   <React.StrictMode>
     <App />

@@ -7,7 +7,7 @@ export default function Clock () {
   const [now, setNow] = useState(new Date())
 
   const { settings } = useContext(SettingsContext)
-  const { timeFormat, showSeconds } = settings
+  const { timeFormat, showSeconds, isDarkMode } = settings
 
   useEffect(() => {
     const interval = setInterval(() => setNow(new Date()), 1000)
@@ -20,8 +20,8 @@ export default function Clock () {
     <section>
       <div className="columns has-text-centered is-family-sans-serif">
         { timeFormat === '24hours'
-          ? <Hours24 date={now} showSeconds={showSeconds}/>
-          : <Hours12 date={now} showSeconds={showSeconds}/>
+          ? <Hours24 date={now} showSeconds={showSeconds} isDarkMode={isDarkMode} />
+          : <Hours12 date={now} showSeconds={showSeconds} isDarkMode={isDarkMode}/>
         }
       </div>
     </section>

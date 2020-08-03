@@ -3,16 +3,21 @@ import { SettingsContext } from './Settings'
 
 export default function City () {
   const { settings } = useContext(SettingsContext)
-  const { location } = settings
+  const { location, isDarkMode } = settings
+
+  const footerTextClassName = 'has-text-centered is-family-sans-serif is-size-4'
+    .concat(' ', isDarkMode ? 'has-text-light' : 'has-text-dark')
+
+  const footerClassName = 'footer'.concat(isDarkMode ? ' has-background-black' : '')
 
   return (
-    <div>
-      <h4 className="has-text-centered
-      is-family-sans-serif
-      is-size-4
-      has-text-dark">
-        {location}
-      </h4>
-    </div>
+    <footer className={footerClassName}>
+      <div>
+        <h4 className={footerTextClassName}>
+          {location}
+        </h4>
+      </div>
+    </footer>
+
   )
 }

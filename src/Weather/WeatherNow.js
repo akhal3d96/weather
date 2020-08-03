@@ -5,7 +5,7 @@ import config from '../config'
 import selectWeatherIcon from '../icon'
 import WeatherInfo from './weather_info'
 
-export default function WeatherNow ({ units, location }) {
+export default function WeatherNow ({ units, location, isDarkMode }) {
   const imageStyle = { margin: 'auto' }
 
   const [weather, setWeather] = useState(new WeatherInfo())
@@ -30,7 +30,7 @@ export default function WeatherNow ({ units, location }) {
 
       <div className='has-text-centered is-family-sans-serif'>
         <figure className="image is-128x128 mb-2" style={imageStyle}>
-          <img src={weather.icon} alt={weather.describtion}/>
+          <img src={weather.icon} alt={weather.describtion} className={isDarkMode && 'is-dark-mode'}/>
         </figure>
         <h1 className="is-size-3 has-text-weight-bold">{weather.temperature}</h1>
         <h3 className="has-text-weight-light is-size-2">{weather.day}</h3>
@@ -42,5 +42,6 @@ export default function WeatherNow ({ units, location }) {
 
 WeatherNow.propTypes = {
   units: PropTypes.string,
-  location: PropTypes.string
+  location: PropTypes.string,
+  isDarkMode: PropTypes.object
 }

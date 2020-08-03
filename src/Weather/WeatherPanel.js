@@ -5,15 +5,15 @@ import WeatherNow from './WeatherNow'
 
 export default function Weather () {
   const { settings } = useContext(SettingsContext)
-  const { units, location } = settings
+  const { units, location, isDarkMode } = settings
 
   const searchLocation = location.replace(/\s/g, '')
 
   return (
     <section>
       <div className="columns is-vcentered is-centered mb-2">
-        <WeatherNow units={units} location={searchLocation}/>
-        <WeatherForecast units={units} location={searchLocation} />
+        <WeatherNow units={units} location={searchLocation} isDarkMode={isDarkMode}/>
+        <WeatherForecast units={units} location={searchLocation} isDarkMode={isDarkMode}/>
       </div>
     </section>
   )

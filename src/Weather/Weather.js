@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default function Weather ({ minTemperature, maxTemperature, day, describtion, icon }) {
+export default function Weather ({ minTemperature, maxTemperature, day, describtion, icon, isDarkMode }) {
   minTemperature = parseInt(minTemperature)
   maxTemperature = parseInt(maxTemperature)
 
@@ -11,7 +11,7 @@ export default function Weather ({ minTemperature, maxTemperature, day, describt
     <div className="column">
       <div className='container is-family-sans-serif has-text-centered'>
         <figure className="image is-64x64" style={imageStyle}>
-          <img src={icon} alt={describtion}/>
+          <img src={icon} alt={describtion} className={isDarkMode && 'is-dark-mode'}/>
         </figure>
         <div className="container">
           <div className="columns">
@@ -30,5 +30,6 @@ Weather.propTypes = {
   maxTemperature: PropTypes.number,
   day: PropTypes.string,
   describtion: PropTypes.string,
-  icon: PropTypes.string
+  icon: PropTypes.string,
+  isDarkMode: PropTypes.object
 }

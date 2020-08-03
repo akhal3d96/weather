@@ -12,7 +12,7 @@ function epochToDayName (epoch) {
   return day.toLocaleDateString(locals, options)
 }
 
-export default function WeatherForecast ({ units, location }) {
+export default function WeatherForecast ({ units, location, isDarkMode }) {
   const [weatherForecast, setWeatherForecast] = useState([])
 
   useEffect(() => {
@@ -44,6 +44,7 @@ export default function WeatherForecast ({ units, location }) {
         describtion={weatherForecastDay.weather[0].description}
         icon={selectWeatherIcon(weatherForecastDay.weather[0].id, true)}
         day={epochToDayName(weatherForecastDay.dt)}
+        isDarkMode={isDarkMode}
       />)
     )
   )
@@ -51,5 +52,6 @@ export default function WeatherForecast ({ units, location }) {
 
 WeatherForecast.propTypes = {
   units: PropTypes.string,
-  location: PropTypes.string
+  location: PropTypes.string,
+  isDarkMode: PropTypes.object
 }

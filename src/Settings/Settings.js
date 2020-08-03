@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { useContext } from 'react'
 import SettingsContext from './SettingsContext'
+import config from '../config'
 
 function Radiobox ({ label, ...rest }) {
   return (
@@ -16,6 +17,11 @@ function chnageSettings (event, setSettings, prevSettings) {
   const name = event.target.name
   const value = type === 'checkbox' ? event.target.checked : event.target.value
   setSettings({ ...prevSettings, [name]: value })
+}
+
+function restoreDefaultSettings (event, setSettings) {
+  event.preventDefault()
+  setSettings(config.defaultSettings)
 }
 
 export default function Settings () {
@@ -58,6 +64,11 @@ export default function Settings () {
             </label>
           </div>
         </div>
+
+        <button onClick={event => restoreDefaultSettings(event, updateSettings)}
+          className="button">
+          Restore to default
+        </button>
 
       </form>
 

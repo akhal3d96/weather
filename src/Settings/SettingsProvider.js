@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import SettingsContext from './SettingsContext'
 import { loadSettings, saveSettings } from './settings_operations'
+import config from '../config'
 
 function updateSettingsMaker (setSettings) {
   return settings => {
@@ -11,12 +12,8 @@ function updateSettingsMaker (setSettings) {
 }
 
 export default function SettingsProvider ({ children }) {
-  const defaultSettings = {
-    units: 'metric',
-    location: 'Cairo,EG',
-    timeFormat: '12hours',
-    showSeconds: true
-  }
+  const defaultSettings = config.defaultSettings
+
   const savedSettings = loadSettings(defaultSettings)
 
   const [settings, setSettings] = useState(savedSettings)

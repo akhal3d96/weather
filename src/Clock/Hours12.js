@@ -6,19 +6,20 @@ function toHours12 (date) {
   return (date.getHours() + 24) % 12 || 12
 }
 
-export default function Hours12 ({ date, showSeconds }) {
+export default function Hours12 ({ date, showSeconds, isDarkMode }) {
   const timePeriod = date.getHours() >= 0 && date.getHours() < 12 ? 'AM' : 'PM'
   return (
     <>
-      <ClockDigit digits={toHours12(date)}/>
-      <ClockDigit digits={date.getMinutes()}/>
-      { showSeconds && <ClockDigit digits={date.getSeconds()}/>}
-      <ClockDigit digits={timePeriod}/>
+      <ClockDigit digits={toHours12(date)} isDarkMode={isDarkMode} />
+      <ClockDigit digits={date.getMinutes()} isDarkMode={isDarkMode}/>
+      { showSeconds && <ClockDigit digits={date.getSeconds()} isDarkMode={isDarkMode}/>}
+      <ClockDigit digits={timePeriod} isDarkMode={isDarkMode}/>
     </>
   )
 }
 
 Hours12.propTypes = {
   date: PropTypes.instanceOf(Date),
-  showSeconds: PropTypes.bool
+  showSeconds: PropTypes.bool,
+  isDarkMode: PropTypes.bool
 }

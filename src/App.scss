@@ -6,7 +6,7 @@
 @import "bulma/sass/grid/columns.sass";
 
 @import "bulma/sass/layout/section.sass";
-
+@import "bulma/sass/layout/footer.sass";
 
 @import "bulma/sass/helpers/typography.sass";
 @import "bulma/sass/helpers/color.sass";
@@ -20,3 +20,7 @@
 @import "bulma/sass/components/navbar.sass";
 @import "bulma/sass/components/modal.sass";
 
+
+img.is-dark-mode {
+  filter: invert(100%);
+}
