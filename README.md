@@ -1,7 +1,6 @@
 # Weather 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/nemoload/weather/master/public/logo192.png
-" alt="Weather">
+  <img src="https://raw.githubusercontent.com/nemoload/weather/master/public/logo192.png" alt="Weather">
 </p>
 
 A very simple web application made using React that fetches weather using **OpenWeatherMap** API alongside few small features and a dark mode of course!
@@ -10,8 +9,7 @@ A very simple web application made using React that fetches weather using **Open
 Live demo: [Here](https://nemoload.github.io/weather/)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/nemoload/weather/master/weather.gif
-" alt="Weather">
+  <img src="https://media.giphy.com/media/JQdlKjM2o6lUmprscr/giphy.gif" alt="Weather">
 </p>
 
 ## Technologies
