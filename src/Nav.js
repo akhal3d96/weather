@@ -7,7 +7,7 @@ function toggleThemeMode (settings, updateSettings) {
   const isDarkMode = !settings.isDarkMode
   updateSettings({ ...settings, isDarkMode })
 
-  document.body.style.backgroundColor = isDarkMode ? '#0A0A0A' : '#ffffff'
+  document.querySelector('html').style.backgroundColor = isDarkMode ? '#0A0A0A' : '#ffffff'
 }
 
 function LightButton () {
