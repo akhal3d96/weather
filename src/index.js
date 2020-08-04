@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker'
 import htmlBackgroundColor from './html_background_color'
 
 const settings = JSON.parse(localStorage.getItem('settings'))
-htmlBackgroundColor(settings.isDarkMode)
+htmlBackgroundColor(settings?.isDarkMode || false)
 
 ReactDOM.render(
   <React.StrictMode>

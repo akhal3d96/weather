@@ -1,6 +1,5 @@
 
 export default function htmlBackgroundColor (isDarkMode) {
-  console.log('isDarMode: ', isDarkMode)
   const darkColor = '#0A0A0A'
   const lightColor = '#ffffff'
 
