@@ -1,13 +1,14 @@
-import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { SettingsContext } from './Settings'
+import React, { useContext } from 'react'
+import htmlBackgroundColor from './html_background_color'
 import { ReactComponent as GearIcon } from './icons/gear.svg'
+import { SettingsContext } from './Settings'
 
 function toggleThemeMode (settings, updateSettings) {
   const isDarkMode = !settings.isDarkMode
   updateSettings({ ...settings, isDarkMode })
 
-  document.querySelector('html').style.backgroundColor = isDarkMode ? '#0A0A0A' : '#ffffff'
+  htmlBackgroundColor(isDarkMode)
 }
 
 function LightButton () {
