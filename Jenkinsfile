@@ -9,22 +9,36 @@ pipeline {
             name: weather-app
         spec:
           containers:
-          - name: node
-            image: node:14-alpine3.15
-            command:
-            - sleep
-            args:
-            - 99d
+          - name: ubuntu
+            image: moby/buildkit:master
+            readinessProbe:
+              exec:
+                command:
+                  - buildctl
+                  - debug
+                  - workers
+              initialDelaySeconds: 5
+              periodSeconds: 30
+            livenessProbe:
+              exec:
+                command:
+                  - buildctl
+                  - debug
+                  - workers
+              initialDelaySeconds: 5
+              periodSeconds: 30
+            securityContext:
+              privileged: true
         '''
     }
   }
   stages {
     stage('Build and install') {
       steps {
-        container('node') {
-          sh 'npm i -g yarn'
-          sh 'yarn i'
-          sh 'yarn build'
+        container('ubuntu') {
+          sh "pwd"
+          sh "ls -lhA"
+          sh "buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=oci,dest=image.tar"
         }
       }
     }
