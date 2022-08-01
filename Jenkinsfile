@@ -6,10 +6,16 @@ pipeline {
         kind: Pod
         metadata:
           labels:
-            name: weather-app
+            name: expert-i-frontend-pipeline
         spec:
           containers:
-          - name: ubuntu
+          - name: node
+            image: node:14-stretch-slim
+            command:
+              - sleep
+            args:
+              - 99d
+          - name: buildkit
             image: moby/buildkit:master
             readinessProbe:
               exec:
@@ -33,12 +39,21 @@ pipeline {
     }
   }
   stages {
-    stage('Build and install') {
+    stage('install node_modules') {
       steps {
-        container('ubuntu') {
-          sh "pwd"
-          sh "ls -lhA"
-          sh "buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=oci,dest=image.tar"
+        container('node') {
+          cache(maxCacheSize: 2048, caches: [
+            [$class: 'ArbitraryFileCache', path: 'node_modules', cacheValidityDecidingFile: 'yarn.lock', compressionMethod: 'TARGZ']
+          ]) {
+            sh "yarn install"
+          }
+        }
+      }
+    }
+    stage('Build') {
+      steps {
+        container('node') {
+          sh "yarn build"
         }
       }
     }
